@@ -4,6 +4,7 @@ import com.mypieceofcode.evfinder.domain.Friend;
 import com.mypieceofcode.evfinder.repository.FriendRepository;
 import com.mypieceofcode.evfinder.service.FriendService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,7 +26,12 @@ public class FriendServiceRepoImpl implements FriendService {
 
     @Override
     public void delete(Friend object) {
-        friendRepository.delete(object);
+        System.out.println("delete friend");
+        try {
+            friendRepository.delete(object);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     @Override
@@ -61,6 +67,10 @@ public class FriendServiceRepoImpl implements FriendService {
 
     @Override
     public void deleteById(Long id) {
-        friendRepository.deleteById(id);
+        try {
+            friendRepository.delete(id);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }

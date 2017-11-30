@@ -89,6 +89,11 @@
 			<artifactId>gcm-server</artifactId>
 			<version>1.0.0</version>
 		</dependency>
+		<dependency>
+			<groupId>io.jmnarloch</groupId>
+			<artifactId>rxjava-spring-boot-starter</artifactId>
+			<version>2.0.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>

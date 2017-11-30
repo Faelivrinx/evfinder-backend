@@ -16,8 +16,8 @@ public class User implements UserDetails, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false, updatable = false)
-    private Long id;
+    @Column(name = "userId", nullable = false, updatable = false)
+    private Long userId;
 
     private String username;
     private String password;
@@ -28,6 +28,9 @@ public class User implements UserDetails, Serializable {
 
     private String email;
 
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "users", cascade = CascadeType.ALL)
+    private List<Event> events= new ArrayList<>();
+
     @JsonIgnore
     private boolean enabled = true;
 
@@ -37,6 +40,8 @@ public class User implements UserDetails, Serializable {
     @OneToMany(mappedBy = "user", cascade =  CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<UserRole> userRoles = new HashSet<>();
+
+
 
 
     @Override
@@ -81,12 +86,12 @@ public class User implements UserDetails, Serializable {
         return enabled;
     }
 
-    public Long getId() {
-        return id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public void setUsername(String username) {

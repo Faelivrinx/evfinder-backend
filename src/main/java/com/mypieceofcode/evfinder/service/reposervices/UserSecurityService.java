@@ -1,4 +1,4 @@
-package com.mypieceofcode.evfinder.service;
+package com.mypieceofcode.evfinder.service.reposervices;
 
 import com.mypieceofcode.evfinder.domain.User;
 import com.mypieceofcode.evfinder.repository.UserRepository;
