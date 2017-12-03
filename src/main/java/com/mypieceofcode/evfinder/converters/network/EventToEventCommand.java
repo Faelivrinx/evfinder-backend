@@ -1,4 +1,4 @@
-package com.mypieceofcode.evfinder.converters;
+package com.mypieceofcode.evfinder.converters.network;
 
 import com.mypieceofcode.evfinder.command.EventCommand;
 import com.mypieceofcode.evfinder.domain.Event;

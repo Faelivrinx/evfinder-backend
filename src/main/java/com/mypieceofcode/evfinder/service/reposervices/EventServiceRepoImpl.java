@@ -1,13 +1,15 @@
 package com.mypieceofcode.evfinder.service.reposervices;
 
+import com.mypieceofcode.evfinder.command.Coordinate;
 import com.mypieceofcode.evfinder.command.EventCommand;
-import com.mypieceofcode.evfinder.converters.EventCommandToEvent;
-import com.mypieceofcode.evfinder.converters.EventToEventCommand;
+import com.mypieceofcode.evfinder.converters.network.EventCommandToEvent;
+import com.mypieceofcode.evfinder.converters.network.EventToEventCommand;
 import com.mypieceofcode.evfinder.domain.Event;
+import com.mypieceofcode.evfinder.domain.User;
+import com.mypieceofcode.evfinder.recommender.EventRecommendation;
 import com.mypieceofcode.evfinder.repository.EventRepository;
 import com.mypieceofcode.evfinder.service.EventService;
 import io.reactivex.Observable;
-import org.apache.tomcat.util.http.fileupload.util.Streams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,8 @@ public class EventServiceRepoImpl implements EventService {
     private EventCommandToEvent eventCommandToEvent;
     @Autowired
     private EventRepository eventRepository;
+    @Autowired
+    private EventRecommendation eventRecommendation;
 
     @Override
     public EventCommand save(EventCommand object) {
@@ -77,6 +81,30 @@ public class EventServiceRepoImpl implements EventService {
         }
         return null;
     }
+
+    @Override
+    public List<EventCommand> findLocalEventsWithRecommendation(User user, Coordinate coordinate) {
+        LOG.warn("Getting events...");
+        List<Event> events = new ArrayList<>();
+        List<EventCommand> eventCommands = new ArrayList<>();
+        Iterable<Event> allEvents = eventRepository.findAll();
+        Observable.fromIterable(allEvents)
+                .filter(event -> distFrom(coordinate.getLatitude(), coordinate.getLongitude(), event.getLatitude(), event.getLongitude()) < 10000)
+                .doOnNext(events::add)
+                .subscribe(event -> {
+                }, throwable -> {
+                }, () -> {
+                });
+
+        List<Event> recommend = eventRecommendation.recommend(user, events);
+
+        for (Event event : recommend) {
+            eventCommands.add(eventToEventCommand.convert(event));
+        }
+
+        return eventCommands;
+    }
+
 
     public float distFrom(double lat1, double lng1, double lat2, double lng2) {
         double earthRadius = 6371000; //meters

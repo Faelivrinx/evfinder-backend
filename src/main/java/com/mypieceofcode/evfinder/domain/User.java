@@ -25,10 +25,12 @@ public class User implements UserDetails, Serializable {
     private String displayName;
     private String apiToken;
     private String fcmToken;
+    private String profile;
 
     private String email;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "users", cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "users", cascade = CascadeType.MERGE)
+    @JsonIgnore
     private List<Event> events= new ArrayList<>();
 
     @JsonIgnore
@@ -41,8 +43,18 @@ public class User implements UserDetails, Serializable {
     @JsonIgnore
     private Set<UserRole> userRoles = new HashSet<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<Comment> comments = new HashSet<>();
 
 
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
 
     @Override
     @JsonIgnore
@@ -126,6 +138,14 @@ public class User implements UserDetails, Serializable {
         this.email = email;
     }
 
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
+    }
+
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
@@ -160,5 +180,13 @@ public class User implements UserDetails, Serializable {
 
     public void setFriends(List<Friend> friends) {
         this.friends = friends;
+    }
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
     }
 }

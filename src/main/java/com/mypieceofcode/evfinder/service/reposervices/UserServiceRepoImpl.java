@@ -2,15 +2,14 @@ package com.mypieceofcode.evfinder.service.reposervices;
 
 import com.mypieceofcode.evfinder.command.ApiKey;
 import com.mypieceofcode.evfinder.command.UserCommand;
-import com.mypieceofcode.evfinder.converters.UserCommandToUser;
-import com.mypieceofcode.evfinder.converters.UserToUserCommand;
+import com.mypieceofcode.evfinder.converters.network.UserCommandToUser;
+import com.mypieceofcode.evfinder.converters.network.UserToUserCommand;
 import com.mypieceofcode.evfinder.domain.User;
 import com.mypieceofcode.evfinder.domain.security.Role;
 import com.mypieceofcode.evfinder.domain.security.UserRole;
 import com.mypieceofcode.evfinder.repository.RoleRepository;
 import com.mypieceofcode.evfinder.repository.UserRepository;
 import com.mypieceofcode.evfinder.repository.UserRoleRepository;
-import com.mypieceofcode.evfinder.service.CustomizedUserSave;
 import com.mypieceofcode.evfinder.service.UserService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 
 @Service
