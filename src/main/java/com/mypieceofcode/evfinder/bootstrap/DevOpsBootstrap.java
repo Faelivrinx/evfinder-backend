@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-import sun.applet.AppletListener;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;

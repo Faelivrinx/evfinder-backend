@@ -1,7 +1,7 @@
 package com.mypieceofcode.evfinder.service;
 
 import com.mypieceofcode.evfinder.command.Coordinate;
-import com.mypieceofcode.evfinder.command.EventCommand;
+import com.mypieceofcode.evfinder.command.event.EventCommand;
 import com.mypieceofcode.evfinder.domain.User;
 
 import java.util.List;

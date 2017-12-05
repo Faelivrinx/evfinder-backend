@@ -1,8 +1,12 @@
-package com.mypieceofcode.evfinder.command;
+package com.mypieceofcode.evfinder.command.event;
 
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EventCommand {
 
+    private Long id;
     private String name;
     private String address;
     private long date;
@@ -10,6 +14,24 @@ public class EventCommand {
     private String profile;
     private double longitude;
     private double latitude;
+
+    private List<CommentCommand> commentCommands = new ArrayList<>();
+
+    public List<CommentCommand> getCommentCommands() {
+        return commentCommands;
+    }
+
+    public void setCommentCommands(List<CommentCommand> commentCommands) {
+        this.commentCommands = commentCommands;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

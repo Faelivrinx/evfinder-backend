@@ -1,11 +1,10 @@
 package com.mypieceofcode.evfinder.controller;
 
 import com.mypieceofcode.evfinder.command.Coordinate;
-import com.mypieceofcode.evfinder.command.EventCommand;
+import com.mypieceofcode.evfinder.command.event.EventCommand;
 import com.mypieceofcode.evfinder.command.TaskResponse;
 import com.mypieceofcode.evfinder.domain.Event;
 import com.mypieceofcode.evfinder.domain.User;
-import com.mypieceofcode.evfinder.recommender.EventRecommendation;
 import com.mypieceofcode.evfinder.repository.EventRepository;
 import com.mypieceofcode.evfinder.service.EventService;
 import com.mypieceofcode.evfinder.service.UserService;

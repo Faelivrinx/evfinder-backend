@@ -1,7 +1,7 @@
 package com.mypieceofcode.evfinder.service.reposervices;
 
 import com.mypieceofcode.evfinder.command.Coordinate;
-import com.mypieceofcode.evfinder.command.EventCommand;
+import com.mypieceofcode.evfinder.command.event.EventCommand;
 import com.mypieceofcode.evfinder.converters.network.EventCommandToEvent;
 import com.mypieceofcode.evfinder.converters.network.EventToEventCommand;
 import com.mypieceofcode.evfinder.domain.Event;
