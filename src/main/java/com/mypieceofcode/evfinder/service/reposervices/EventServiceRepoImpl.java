@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -98,7 +99,11 @@ public class EventServiceRepoImpl implements EventService {
 
         List<Event> recommend = eventRecommendation.recommend(user, events);
 
+
+
         for (Event event : recommend) {
+            long time = new Date().getTime();
+            if (event.getDate() > time)
             eventCommands.add(eventToEventCommand.convert(event));
         }
 
