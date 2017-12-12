@@ -29,7 +29,11 @@ public class Event {
     private String profile;
     private double correlation;
 
-    // TODO: 03.12.2017 CHANGE LAZY
+    @Transient
+    private double expectedRating = 0;
+
+
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(name = "event_user", joinColumns = {@JoinColumn(name = "eventId")}, inverseJoinColumns = {@JoinColumn(name = "user_id")})
     private List<User> users = new ArrayList<>();

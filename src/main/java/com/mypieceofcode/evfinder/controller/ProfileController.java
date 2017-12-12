@@ -2,6 +2,8 @@ package com.mypieceofcode.evfinder.controller;
 
 import com.mypieceofcode.evfinder.command.TaskResponse;
 import com.mypieceofcode.evfinder.domain.User;
+import com.mypieceofcode.evfinder.recommender.UserSimilarity;
+import com.mypieceofcode.evfinder.recommender.UserSimilarityImpl;
 import com.mypieceofcode.evfinder.service.UserService;
 import com.mypieceofcode.evfinder.utils.TaskFactory;
 import org.slf4j.Logger;
@@ -35,6 +37,7 @@ public class ProfileController {
 
         return taskFactory.createTaskResponse(false, "Profile Update");
     }
+
 }
 
 

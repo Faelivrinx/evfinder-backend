@@ -1,9 +1,14 @@
 package com.mypieceofcode.evfinder.controller;
 
 
+import com.mypieceofcode.evfinder.command.Coordinate;
 import com.mypieceofcode.evfinder.domain.Event;
 import com.mypieceofcode.evfinder.domain.User;
 import com.mypieceofcode.evfinder.recommender.EventRecommendation;
+import com.mypieceofcode.evfinder.recommender.UserSimilarity;
+import com.mypieceofcode.evfinder.recommender.UserSimilarityBuilder;
+import com.mypieceofcode.evfinder.service.EventService;
+import com.mypieceofcode.evfinder.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +21,13 @@ import java.util.List;
 public class TestController {
 
     @Autowired
-    EventRecommendation eventRecommendation;
+    EventService eventService;
+
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    UserSimilarityBuilder builder;
 
     @PostMapping(value = "/test")
     public void checkConverter(){
@@ -45,6 +56,17 @@ public class TestController {
         events.add(dlaDzieci);
         events.add(mieszane);
 
-        eventRecommendation.recommend(user, events);
+//        eventRecommendation.recommend(user, events);
+    }
+
+    @PostMapping(value = "/test/rec")
+    public void checkRecommendation() {
+
+//        Coordinate coordinate = new Coordinate(50.263162, 19.0311411);
+
+        eventService.findLocalEventsUsedUserRecommendation(userService.findByUsername("Adam"), new Coordinate());
+//        UserSimilarity userSimilarity = builder.build(userService.findByUsername("Adam"));
+//        userSimilarity.findSimilarUsersWithThreshold(coordinate, 0);
+
     }
 }

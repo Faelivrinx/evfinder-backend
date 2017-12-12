@@ -2,6 +2,7 @@ package com.mypieceofcode.evfinder.recommender;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mypieceofcode.evfinder.converters.recommender.ProfileConverter;
+import com.mypieceofcode.evfinder.domain.Comment;
 import com.mypieceofcode.evfinder.domain.Event;
 import com.mypieceofcode.evfinder.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,76 @@ public class EventRecommendationImpl implements EventRecommendation {
         }
 
         return sum / (Math.sqrt(sumUser) * Math.sqrt(sumEvent));
+    }
+
+    @Override
+    public List<Event> recommendByUsers(User user, List<User> similarUsers, List<Event> localEvents) {
+        if (similarUsers.size() > 0) {
+            List<Event> eventsToRecommendation = new ArrayList<>();
+            for (Event localEvent : localEvents) {
+                if (isCommented(user, localEvent) == null) {
+                    eventsToRecommendation.add(localEvent);
+                }
+            }
+            double avUserRating = computeAverage(user, localEvents);
+
+            for (Event localevent : eventsToRecommendation) {
+                double sumDenominator = 0;
+                double sumSimilariry = 0;
+                for (User similarUser : similarUsers) {
+                    double avFriendRating = computeAverage(similarUser, localEvents);
+                    for (Comment comment : similarUser.getComments()) {
+                        if (comment.getEvent().getEventId() == localevent.getEventId()) {
+                            sumSimilariry += similarUser.getSimilarity();
+                            sumDenominator += similarUser.getSimilarity() * (comment.getRating() - avFriendRating);
+                        }
+                    }
+                }
+                if (sumSimilariry == 0) {
+                    localevent.setExpectedRating(0);
+                } else {
+                    double resultRating = avUserRating + (sumDenominator / sumSimilariry);
+                    localevent.setExpectedRating(resultRating);
+                }
+            }
+
+            Collections.sort(eventsToRecommendation, (event1, event2) -> {
+                if (event1.getExpectedRating() == event2.getExpectedRating()) {
+                    return 0;
+                }
+
+                return event1.getExpectedRating() < event2.getExpectedRating() ? 1 : -1;
+            });
+
+            return eventsToRecommendation;
+        }
+
+        return Collections.emptyList();
+    }
+
+
+    private double computeAverage(User user, List<Event> events) {
+        double sumRatingsUser = 0;
+        double countRatingsUser = 0;
+
+        for (Event event : events) {
+            Comment userComment = isCommented(user, event);
+            if (userComment != null) {
+                sumRatingsUser += userComment.getRating();
+                countRatingsUser += 1;
+            }
+        }
+        return sumRatingsUser / countRatingsUser;
+    }
+
+    private Comment isCommented(User user, Event event) {
+        for (Comment comment : user.getComments()) {
+            for (Comment comment1 : event.getComments()) {
+                if (comment.getEvent().getEventId() == comment1.getEvent().getEventId())
+                    return comment;
+            }
+        }
+        return null;
     }
 
 

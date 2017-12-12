@@ -53,6 +53,7 @@ public class UserServiceRepoImpl implements UserService{
         this.entityManager = manager;
     }
 
+    @Transactional
     @Override
     public User findByUsername(String username) {
         User user = userRepository.findByUsername(username);
@@ -110,6 +111,7 @@ public class UserServiceRepoImpl implements UserService{
         return null;
     }
 
+    @Transactional
     @Override
     public User findUserByApiKey(String apiKey) {
         if (apiKey != null) {

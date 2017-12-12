@@ -7,6 +7,8 @@ import com.mypieceofcode.evfinder.converters.network.EventToEventCommand;
 import com.mypieceofcode.evfinder.domain.Event;
 import com.mypieceofcode.evfinder.domain.User;
 import com.mypieceofcode.evfinder.recommender.EventRecommendation;
+import com.mypieceofcode.evfinder.recommender.UserSimilarity;
+import com.mypieceofcode.evfinder.recommender.UserSimilarityBuilder;
 import com.mypieceofcode.evfinder.repository.EventRepository;
 import com.mypieceofcode.evfinder.service.EventService;
 import io.reactivex.Observable;
@@ -33,6 +35,10 @@ public class EventServiceRepoImpl implements EventService {
     @Autowired
     private EventRecommendation eventRecommendation;
 
+    @Autowired
+    UserSimilarityBuilder builder;
+
+
     @Override
     public EventCommand save(EventCommand object) {
         Event event = eventRepository.save(eventCommandToEvent.convert(object));
@@ -56,6 +62,25 @@ public class EventServiceRepoImpl implements EventService {
 
     @Override
     public EventCommand findById(Long id) {
+        return null;
+    }
+
+    @Override
+    public List<Event> findLocalDomainEvents(User user, Coordinate coordinate) {
+        LOG.warn("Getting events...");
+        List<Event> events = new ArrayList<>();
+        Iterable<Event> allEvents = eventRepository.findAll();
+        Observable.fromIterable(allEvents)
+                .filter(event -> distFrom(coordinate.getLatitude(), coordinate.getLongitude(), event.getLatitude(), event.getLongitude()) < 10000)
+                .doOnNext(events::add)
+                .subscribe(event -> {
+                }, throwable -> {
+                }, () -> {
+                });
+
+        if (!events.isEmpty()) {
+            return events;
+        }
         return null;
     }
 
@@ -108,6 +133,30 @@ public class EventServiceRepoImpl implements EventService {
         }
 
         return eventCommands;
+    }
+
+    @Override
+    public List<EventCommand> findLocalEventsUsedUserRecommendation(User user, Coordinate coordinate) {
+        LOG.warn("Getting events...");
+        // TODO: 11.12.2017 del coordinate
+        Coordinate coordinate1 = new Coordinate(50.263162, 19.0311411);
+        List<Event> events = new ArrayList<>();
+        Iterable<Event> allEvents = eventRepository.findAll();
+        Observable.fromIterable(allEvents)
+                .filter(event -> distFrom(coordinate1.getLatitude(), coordinate1.getLongitude(), event.getLatitude(), event.getLongitude()) < 10000)
+                .doOnNext(events::add)
+                .subscribe(event -> {
+                }, throwable -> {
+                }, () -> {
+                });
+
+        UserSimilarity build = builder.build(user);
+        List<Event> eventsRec = eventRecommendation.recommendByUsers(user, build.findSimilarUsersWithThreshold(coordinate1, 0.4), events);
+        if (eventsRec.size() >0 ){
+
+        }
+
+        return null;
     }
 
 

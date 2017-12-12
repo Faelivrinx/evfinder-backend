@@ -27,6 +27,17 @@ public class User implements UserDetails, Serializable {
     private String fcmToken;
     private String profile;
 
+    @Transient
+    private double similarity = 0;
+
+    public double getSimilarity() {
+        return similarity;
+    }
+
+    public void setSimilarity(double similarity) {
+        this.similarity = similarity;
+    }
+
     private String email;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "users", cascade = CascadeType.MERGE)
@@ -43,7 +54,7 @@ public class User implements UserDetails, Serializable {
     @JsonIgnore
     private Set<UserRole> userRoles = new HashSet<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<Comment> comments = new HashSet<>();
 

@@ -16,7 +16,7 @@ public class Comment {
     @JsonIgnore
     private Event event;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
     private int rating;
