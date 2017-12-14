@@ -42,29 +42,44 @@ public class FriendController {
     @PostMapping("/friends/request")
     public TaskResponse requestAdd(@RequestHeader("Authorization") String token, @RequestParam("username")String username){
         User byUsername = userService.findByUsername(username);
+        User user = userService.findUserByApiKey(token);
 
         if (null == byUsername){
             return new TaskResponse("NULL", "error");
         }
-        LOG.info("Sending request from user " + byUsername.getUsername() + " to: " + username);
+        LOG.info("Sending request from user " + byUsername.getUsername() + " to: " + user.getUsername());
 
-        return PushNotificationHelper.sendPushNotification(byUsername.getFcmToken(), username);
+        return PushNotificationHelper.sendPushNotification(byUsername.getFcmToken(), user.getUsername());
     }
 
     @PostMapping("/friends/add")
     public TaskResponse addFriend(@RequestHeader("Authorization") String token, @RequestParam("username")String username){
 
+
+        //admin
         User currentUser = userService.findUserByApiKey(token);
 
+        //mobilny
+        User myFriend = userService.findByUsername(username);
+
+
+        //username mobilny
         Friend friend = new Friend();
         friend.setName(username);
         friend.setUsername(username);
         friend.setUser(currentUser);
         Friend save = friendService.save(friend);
 
+        Friend friend1 = new Friend();
+        friend1.setName(currentUser.getUsername());
+        friend1.setUsername(currentUser.getUsername());
+        friend1.setUser(myFriend);
+        Friend save1 = friendService.save(friend1);
+
+
         LOG.info("Friends added " + friend.getUsername() + " --> "+ friend.getUser().getUsername());
 
-        if (save != null){
+        if (save != null || save1 != null){
             return new TaskResponse("SUBMIT_FRIEND", "success");
         }
         return new TaskResponse("SUBMIT_FRIEND", "failed");

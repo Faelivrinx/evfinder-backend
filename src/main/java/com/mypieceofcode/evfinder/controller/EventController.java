@@ -36,10 +36,10 @@ public class EventController {
 
 
     @PostMapping("events")
-    public List<EventCommand> localEvents(@RequestBody Coordinate coordinate){
+    public List<EventCommand> localEvents(@RequestBody Coordinate coordinate) {
         List<EventCommand> localEvents = eventService.findLocalEvents(coordinate.getLatitude(), coordinate.getLongitude());
 
-        if (localEvents != null){
+        if (localEvents != null) {
             return localEvents;
         }
 
@@ -47,30 +47,48 @@ public class EventController {
     }
 
     @PostMapping("events/recommendation")
-    public List<EventCommand> recommendEvent(@RequestHeader("Authorization")String key, @RequestBody Coordinate coordinate){
+    public List<EventCommand> recommendEvent(@RequestHeader("Authorization") String key, @RequestBody Coordinate coordinate) {
         User user = userService.findUserByApiKey(key);
-        if (user == null){
+        if (user == null) {
             throw new IllegalArgumentException("Can't find user with key: " + key);
+        }
+
+        if (coordinate.getRecommendationType() == 0) {
+            return eventService.findLocalEvents(coordinate.getLatitude(), coordinate.getLongitude());
+        } else if (coordinate.getRecommendationType() == 1) {
+            return eventService.findLocalEventsWithRecommendation(user, coordinate);
+        } else if (coordinate.getRecommendationType() == 2) {
+            return eventService.findLocalEventsUsedUserRecommendation(user, coordinate);
         }
 
         return eventService.findLocalEventsWithRecommendation(user, coordinate);
     }
 
     @PostMapping("event/add")
-    public TaskResponse add(@RequestBody EventCommand command){
+    public TaskResponse add(@RequestBody EventCommand command) {
         EventCommand event = eventService.save(command);
-        if (event != null){
+        if (event != null) {
             return taskFactory.createTaskResponse(true, "ADD_EVENT");
         }
         return taskFactory.createTaskResponse(false, "ADD_EVENT");
     }
 
     @PostMapping("events/all")
-    public List<Event> getEvents(){
+    public List<Event> getEvents() {
         List<Event> events = new ArrayList<>();
         eventRepository.findAll().forEach(events::add);
 
 
         return events;
+    }
+
+    @PostMapping("events/recommendation/test")
+    public List<EventCommand> getRecommentedEvents(@RequestHeader("Authorization") String key, @RequestBody Coordinate coordinate) {
+        User user = userService.findUserByApiKey(key);
+        if (user == null) {
+            throw new IllegalArgumentException("Can't find user with key " + key);
+        }
+
+        return eventService.findLocalEventsUsedUserRecommendation(user, coordinate);
     }
 }

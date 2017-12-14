@@ -16,8 +16,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -108,6 +110,7 @@ public class EventServiceRepoImpl implements EventService {
         return null;
     }
 
+    @Transactional
     @Override
     public List<EventCommand> findLocalEventsWithRecommendation(User user, Coordinate coordinate) {
         LOG.warn("Getting events...");
@@ -124,26 +127,50 @@ public class EventServiceRepoImpl implements EventService {
 
         List<Event> recommend = eventRecommendation.recommend(user, events);
 
-
-
         for (Event event : recommend) {
             long time = new Date().getTime();
             if (event.getDate() > time)
-            eventCommands.add(eventToEventCommand.convert(event));
+                eventCommands.add(eventToEventCommand.convert(event));
         }
 
         return eventCommands;
     }
 
+//
+//    @Transactional
+//    public List<EventCommand> getLocalEvents(Coordinate coordinate) {
+//        LOG.warn("Getting events...");
+//        List<Event> events = new ArrayList<>();
+//        List<EventCommand> eventCommands = new ArrayList<>();
+//        Iterable<Event> allEvents = eventRepository.findAll();
+//        Observable.fromIterable(allEvents)
+//                .filter(event -> distFrom(coordinate.getLatitude(), coordinate.getLatitude(), event.getLatitude(), event.getLongitude()) < 10000)
+//                .doOnNext(events::add)
+//                .subscribe(event -> {
+//                }, throwable -> {
+//                }, () -> {
+//                });
+//
+//        for (Event event : events) {
+//            eventCommands.add(eventToEventCommand.convert(event));
+//        }
+//
+//        if (!eventCommands.isEmpty()) {
+//            return eventCommands;
+//        }
+//        return null;
+//    }
+
+    @Transactional
     @Override
     public List<EventCommand> findLocalEventsUsedUserRecommendation(User user, Coordinate coordinate) {
         LOG.warn("Getting events...");
         // TODO: 11.12.2017 del coordinate
-        Coordinate coordinate1 = new Coordinate(50.263162, 19.0311411);
         List<Event> events = new ArrayList<>();
+        List<EventCommand> eventCommands = new ArrayList<>();
         Iterable<Event> allEvents = eventRepository.findAll();
         Observable.fromIterable(allEvents)
-                .filter(event -> distFrom(coordinate1.getLatitude(), coordinate1.getLongitude(), event.getLatitude(), event.getLongitude()) < 10000)
+                .filter(event -> distFrom(coordinate.getLatitude(), coordinate.getLongitude(), event.getLatitude(), event.getLongitude()) < 10000)
                 .doOnNext(events::add)
                 .subscribe(event -> {
                 }, throwable -> {
@@ -151,9 +178,15 @@ public class EventServiceRepoImpl implements EventService {
                 });
 
         UserSimilarity build = builder.build(user);
-        List<Event> eventsRec = eventRecommendation.recommendByUsers(user, build.findSimilarUsersWithThreshold(coordinate1, 0.4), events);
+        List<Event> eventsRec = eventRecommendation.recommendByUsers(user, build.findSimilarUsersWithThreshold(coordinate, 0.4), events);
         if (eventsRec.size() >0 ){
+            for (Event event : eventsRec) {
+                if (event.getDate() > new Date().getTime()){
+                    eventCommands.add(eventToEventCommand.convert(event));
+                }
+            }
 
+            return eventCommands;
         }
 
         return null;

@@ -5,6 +5,8 @@ public class Coordinate {
     private double latitude;
     private double longitude;
 
+    private int recommendationType;
+
     public Coordinate() {
     }
 
@@ -23,6 +25,14 @@ public class Coordinate {
 
     public double getLongitude() {
         return longitude;
+    }
+
+    public int getRecommendationType() {
+        return recommendationType;
+    }
+
+    public void setRecommendationType(int recommendationType) {
+        this.recommendationType = recommendationType;
     }
 
     public void setLongitude(double longitude) {
