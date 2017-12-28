@@ -14,8 +14,17 @@ public class EventCommand {
     private String profile;
     private double longitude;
     private double latitude;
+    private List<UserAttendCommand> users = new ArrayList<>();
 
     private List<CommentCommand> commentCommands = new ArrayList<>();
+
+    public List<UserAttendCommand> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<UserAttendCommand> users) {
+        this.users = users;
+    }
 
     public List<CommentCommand> getCommentCommands() {
         return commentCommands;

@@ -1,11 +1,14 @@
 package com.mypieceofcode.evfinder.converters.network;
 
+import com.mypieceofcode.evfinder.command.UserCommand;
 import com.mypieceofcode.evfinder.command.event.EventCommand;
+import com.mypieceofcode.evfinder.command.event.UserAttendCommand;
 import com.mypieceofcode.evfinder.domain.Event;
 import lombok.Synchronized;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class EventCommandToEvent implements Converter<EventCommand, Event> {
@@ -13,6 +16,10 @@ public class EventCommandToEvent implements Converter<EventCommand, Event> {
     @Autowired
     CommentCommandToComment commentCommandToComment;
 
+    @Autowired
+    UserAttendCommandToUser userAttendCommandToUser;
+
+    @Transactional
     @Synchronized
     @Override
     public Event convert(EventCommand eventCommand) {
@@ -31,6 +38,13 @@ public class EventCommandToEvent implements Converter<EventCommand, Event> {
             eventCommand.getCommentCommands()
                     .forEach(commentCommand -> event.getComments().add(commentCommandToComment.convert(commentCommand)));
         }
+        if (!eventCommand.getUsers().isEmpty() && eventCommand.getUsers() != null){
+            eventCommand.getUsers()
+                    .forEach(user -> event.getUsers().add(userAttendCommandToUser.convert(user)));
+        }
         return event;
     }
+
+
+
 }

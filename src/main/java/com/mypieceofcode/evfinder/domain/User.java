@@ -58,7 +58,6 @@ public class User implements UserDetails, Serializable {
     @JsonIgnore
     private Set<Comment> comments = new HashSet<>();
 
-
     public List<Event> getEvents() {
         return events;
     }

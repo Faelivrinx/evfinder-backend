@@ -2,6 +2,7 @@ package com.mypieceofcode.evfinder.converters.network;
 
 import com.mypieceofcode.evfinder.command.event.CommentCommand;
 import com.mypieceofcode.evfinder.domain.Comment;
+import com.mypieceofcode.evfinder.repository.CommentRepository;
 import com.mypieceofcode.evfinder.repository.EventRepository;
 import com.mypieceofcode.evfinder.repository.UserRepository;
 import lombok.Synchronized;
@@ -18,13 +19,19 @@ public class CommentCommandToComment implements Converter<CommentCommand, Commen
     @Autowired
     EventRepository eventRepository;
 
+    @Autowired
+    CommentRepository commentRepository;
+
     @Synchronized
     @Override
     public Comment convert(CommentCommand commentCommand) {
-        Comment comment = new Comment();
+        Comment comment = commentRepository.findOne(commentCommand.getId());
+        if (comment == null){
+            comment = new Comment();
+        }
         comment.setComment(commentCommand.getComment());
         comment.setRating(commentCommand.getRating());
-        comment.setEvent(eventRepository.findOne(commentCommand.getId()));
+        comment.setEvent(eventRepository.findOne(commentCommand.getEventId()));
         comment.setUser(userRepository.findOne(commentCommand.getUserID()));
         return comment;
     }

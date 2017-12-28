@@ -13,4 +13,6 @@ public interface EventService extends CRUDService<EventCommand>{
     List<EventCommand> findLocalEvents(double latitude, double longitude);
     List<EventCommand> findLocalEventsWithRecommendation(User user, Coordinate coordinate);
     List<EventCommand> findLocalEventsUsedUserRecommendation(User user, Coordinate coordinate);
+    List<EventCommand> findByFriends(User user, Coordinate coordinate);
+
 }

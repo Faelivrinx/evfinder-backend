@@ -5,11 +5,14 @@ import com.mypieceofcode.evfinder.command.event.EventCommand;
 import com.mypieceofcode.evfinder.converters.network.EventCommandToEvent;
 import com.mypieceofcode.evfinder.converters.network.EventToEventCommand;
 import com.mypieceofcode.evfinder.domain.Event;
+import com.mypieceofcode.evfinder.domain.Friend;
 import com.mypieceofcode.evfinder.domain.User;
 import com.mypieceofcode.evfinder.recommender.EventRecommendation;
 import com.mypieceofcode.evfinder.recommender.UserSimilarity;
 import com.mypieceofcode.evfinder.recommender.UserSimilarityBuilder;
 import com.mypieceofcode.evfinder.repository.EventRepository;
+import com.mypieceofcode.evfinder.repository.FriendRepository;
+import com.mypieceofcode.evfinder.repository.UserRepository;
 import com.mypieceofcode.evfinder.service.EventService;
 import io.reactivex.Observable;
 import org.slf4j.Logger;
@@ -18,10 +21,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class EventServiceRepoImpl implements EventService {
@@ -36,11 +37,14 @@ public class EventServiceRepoImpl implements EventService {
     private EventRepository eventRepository;
     @Autowired
     private EventRecommendation eventRecommendation;
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     UserSimilarityBuilder builder;
 
 
+    @Transactional
     @Override
     public EventCommand save(EventCommand object) {
         Event event = eventRepository.save(eventCommandToEvent.convert(object));
@@ -64,7 +68,8 @@ public class EventServiceRepoImpl implements EventService {
 
     @Override
     public EventCommand findById(Long id) {
-        return null;
+        Event event = eventRepository.findOne(id);
+        return eventToEventCommand.convert(event);
     }
 
     @Override
@@ -129,8 +134,10 @@ public class EventServiceRepoImpl implements EventService {
 
         for (Event event : recommend) {
             long time = new Date().getTime();
-            if (event.getDate() > time)
+            if (event.getDate() > time) {
+                LOG.info(event.getName() + " with correlation: " + event.getCorrelation());
                 eventCommands.add(eventToEventCommand.convert(event));
+            }
         }
 
         return eventCommands;
@@ -179,9 +186,9 @@ public class EventServiceRepoImpl implements EventService {
 
         UserSimilarity build = builder.build(user);
         List<Event> eventsRec = eventRecommendation.recommendByUsers(user, build.findSimilarUsersWithThreshold(coordinate, 0.4), events);
-        if (eventsRec.size() >0 ){
+        if (eventsRec.size() > 0) {
             for (Event event : eventsRec) {
-                if (event.getDate() > new Date().getTime()){
+                if (event.getDate() > new Date().getTime()) {
                     eventCommands.add(eventToEventCommand.convert(event));
                 }
             }
@@ -190,6 +197,48 @@ public class EventServiceRepoImpl implements EventService {
         }
 
         return null;
+    }
+
+    @Override
+    public List<EventCommand> findByFriends(User user, Coordinate coordinate) {
+        LOG.warn("Getting events...");
+        List<Friend> friends = user.getFriends();
+        List<User> userFriends = new ArrayList<>();
+        for (Friend friend : friends) {
+            userFriends.add(userRepository.findByUsername(friend.getUsername()));
+        }
+
+        List<Event> events = new ArrayList<>();
+        List<EventCommand> eventCommands = new ArrayList<>();
+        Iterable<Event> allEvents = eventRepository.findAll();
+        Observable.fromIterable(allEvents)
+                .filter(event -> distFrom(coordinate.getLatitude(), coordinate.getLongitude(), event.getLatitude(), event.getLongitude()) < 10000)
+                .doOnNext(events::add)
+                .subscribe(event -> {
+                }, throwable -> {
+                }, () -> {
+                });
+
+        List<Event> collect = events.stream()
+                .map(event -> {
+                    int friendCount = 0;
+                    for (User user1 : event.getUsers()) {
+
+                        for (User userFriend : userFriends) {
+                            if (user1.getUserId().equals(userFriend.getUserId())) {
+                                friendCount++;
+                            }
+                        }
+                    }
+                    event.setFriendCount(friendCount);
+                    return event;
+                })
+                .sorted((o1, o2) -> Integer.compare(o2.getFriendCount(), o1.getFriendCount()))
+                .collect(Collectors.toList());
+
+        collect.forEach(event -> eventCommands.add(eventToEventCommand.convert(event)));
+
+        return eventCommands;
     }
 
 

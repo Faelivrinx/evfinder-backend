@@ -8,3 +8,7 @@ import java.util.List;
 public interface EventRecommendation extends Recommendation<Event> {
     List<Event> recommendByUsers(User user, List<User> similarUsers, List<Event> localEvents);
 }
+
+
+
+

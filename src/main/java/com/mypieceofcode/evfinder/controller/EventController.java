@@ -1,19 +1,24 @@
 package com.mypieceofcode.evfinder.controller;
 
 import com.mypieceofcode.evfinder.command.Coordinate;
+import com.mypieceofcode.evfinder.command.event.CommentCommand;
 import com.mypieceofcode.evfinder.command.event.EventCommand;
 import com.mypieceofcode.evfinder.command.TaskResponse;
+import com.mypieceofcode.evfinder.command.event.UserAttendCommand;
+import com.mypieceofcode.evfinder.converters.network.CommentCommandToComment;
+import com.mypieceofcode.evfinder.converters.network.EventCommandToEvent;
+import com.mypieceofcode.evfinder.converters.network.UserToUserAttendCommand;
+import com.mypieceofcode.evfinder.converters.network.UserToUserCommand;
 import com.mypieceofcode.evfinder.domain.Event;
 import com.mypieceofcode.evfinder.domain.User;
+import com.mypieceofcode.evfinder.repository.CommentRepository;
 import com.mypieceofcode.evfinder.repository.EventRepository;
 import com.mypieceofcode.evfinder.service.EventService;
 import com.mypieceofcode.evfinder.service.UserService;
 import com.mypieceofcode.evfinder.utils.TaskFactory;
+import com.mypieceofcode.evfinder.utils.TaskFactoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -34,6 +39,15 @@ public class EventController {
     @Autowired
     private EventRepository eventRepository;
 
+    @Autowired
+    private CommentRepository commentRepository;
+
+    @Autowired
+    private UserToUserAttendCommand userToUserCommand;
+
+    @Autowired
+    private CommentCommandToComment commentCommandToComment;
+
 
     @PostMapping("events")
     public List<EventCommand> localEvents(@RequestBody Coordinate coordinate) {
@@ -44,6 +58,25 @@ public class EventController {
         }
 
         return Collections.emptyList();
+    }
+
+    @GetMapping("event/{id}/delete")
+    public TaskResponse deleteEvent(@PathVariable("id")Long id){
+        EventCommand event = eventService.findById(id);
+        event.getUsers().clear();
+
+        for (CommentCommand commentCommand : event.getCommentCommands()) {
+            commentRepository.delete(commentCommand.getId());
+        }
+        event.getCommentCommands().clear();
+
+        EventCommand clearedEvent = eventService.save(event);
+        if (clearedEvent != null)
+            eventService.delete(event);
+        else {
+            return taskFactory.createTaskResponse(false, "Event Deleted");
+        }
+        return taskFactory.createTaskResponse(true, "Event Deleted");
     }
 
     @PostMapping("events/recommendation")
@@ -59,6 +92,8 @@ public class EventController {
             return eventService.findLocalEventsWithRecommendation(user, coordinate);
         } else if (coordinate.getRecommendationType() == 2) {
             return eventService.findLocalEventsUsedUserRecommendation(user, coordinate);
+        } else if (coordinate.getRecommendationType() == 3){
+            return eventService.findByFriends(user, coordinate);
         }
 
         return eventService.findLocalEventsWithRecommendation(user, coordinate);
@@ -90,5 +125,24 @@ public class EventController {
         }
 
         return eventService.findLocalEventsUsedUserRecommendation(user, coordinate);
+    }
+
+    @GetMapping("event/{id}/attend")
+    public EventCommand attendAtEvent(@RequestHeader("Authorization") String token, @PathVariable("id") Long id){
+        User user = userService.findUserByApiKey(token);
+        EventCommand event = eventService.findById(id);
+
+        for (UserAttendCommand userAttendCommand : event.getUsers()) {
+            if (userAttendCommand.getId() == user.getUserId()){
+                return new EventCommand();
+            }
+        }
+
+        if (user == null || event == null){
+            throw new IllegalStateException("Can't find user or event");
+        }
+
+        event.getUsers().add(userToUserCommand.convert(user));
+        return eventService.save(event);
     }
 }
