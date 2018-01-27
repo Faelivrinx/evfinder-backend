@@ -42,6 +42,7 @@ public class HomeController {
         ApiKey apiKey = new ApiKey();
         User user = userService.findByUsername(username);
         if (user == null) {
+            apiKey.setValue("NOT_FOUND");
             return apiKey;
         }
         if(encoder.matches(password, user.getPassword())){
@@ -51,6 +52,7 @@ public class HomeController {
             apiKey.setValue(user.getApiToken());
             return apiKey;
         }
+        apiKey.setValue("BAD_PASS");
         return apiKey;
     }
 
