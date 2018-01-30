@@ -81,14 +81,14 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
 
     private void create() {
         User user = new User();
-        user.setUsername("Testowy");
-        user.setDisplayName("Testowy User");
+        user.setUsername("Monika");
+        user.setDisplayName("Monika");
         user.setProfile("{\"25\":3,\"10\":0,\"5\":0,\"14\":0,\"2\":0,\"19\":0,\"13\":4,\"8\":0,\"27\":2,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":0,\"1\":5,\"29\":0,\"21\":0,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
         userRepository.save(user);
 
         User user1 = new User();
         user1.setApiToken("fdsafdsdsaga");
-        user1.setUsername("Adam");
+        user1.setUsername("Test");
         user1.setPassword("$2a$12$qmpFIUrXNteGrv7nx6zkxu/SG4wve8ZVNsWMbKqERjnzj8Ha7K5KS");
         user1.setDisplayName("Testowy User");
         user1.setProfile("{\"25\":3,\"10\":0,\"5\":0,\"14\":0,\"2\":0,\"19\":0,\"13\":4,\"8\":0,\"27\":2,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":0,\"1\":5,\"29\":0,\"21\":0,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
@@ -96,22 +96,22 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
 
         User user2 = new User();
         user2.setApiToken("gdashfa");
-        user2.setUsername("ddd");
-        user2.setDisplayName("Testowy User");
+        user2.setUsername("Adam");
+        user2.setDisplayName("Adam");
         user2.setProfile("{\"25\":3,\"10\":0,\"5\":0,\"14\":0,\"2\":0,\"19\":0,\"13\":4,\"8\":0,\"27\":2,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":0,\"1\":5,\"29\":0,\"21\":0,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
         userRepository.save(user2);
 
         User user3 = new User();
         user3.setApiToken("fdafbbfadbd");
-        user3.setUsername("xxx");
-        user3.setDisplayName("Testowy User");
+        user3.setUsername("Marek");
+        user3.setDisplayName("Marek");
         user3.setProfile("{\"25\":3,\"10\":0,\"5\":0,\"14\":0,\"2\":0,\"19\":0,\"13\":4,\"8\":0,\"27\":2,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":0,\"1\":5,\"29\":0,\"21\":0,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
         userRepository.save(user3);
 
         User user4 = new User();
         user4.setApiToken("4324326432vdsa");
-        user4.setUsername("jjj");
-        user4.setDisplayName("Testowy User");
+        user4.setUsername("Faelivrinx");
+        user4.setDisplayName("Marian Kowalski");
         user4.setProfile("{\"25\":3,\"10\":0,\"5\":0,\"14\":0,\"2\":0,\"19\":0,\"13\":4,\"8\":0,\"27\":2,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":0,\"1\":5,\"29\":0,\"21\":0,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
         userRepository.save(user4);
 
@@ -170,38 +170,7 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
                 "\n" +
                 "Największy skład tegorocznego Silesian Jazz Festivalu pojawi się na scenie Miasta Ogrodów 9 grudnia na koncercie „Tribute to Akwarium” Piotra Wojtasika. To współczesny elektro-akustyczny jazz reprezentujący nurt modalny z elementami muzyki etnicznej. Wcześniej poznamy laureatów Konkursu na Kompozycję Jazzową.\n" +
                 "\n" +
-                "Komu będzie mało wrażeń, jazzowe after party w klubie Absurdalna zapewni Kuba Więcek Trio.\n" +
-                "\n" +
-                "Finał 10 grudnia zapowiada się najbardziej międzynarodowo. Przed solowym recitale Marcina Maseckiego w Muzeum Śląskim spotkanie z projektem Hearth: Rasmussen/ Rave/ Santos Silva/ Draksler. To jedyne w swoim rodzaju spotkanie muzyków z Norwegii, Holandii, Portugalii i Słowenii.\n" +
-                "\n" +
-                "\n" +
-                "Program 12. Silesian Jazz Festivalu\n" +
-                "\n" +
-                "8 grudnia (piątek), sala koncertowa Miasta Ogrodów, początek koncertów o godz. 18\n" +
-                "\n" +
-                "RGG „Contemporary Sonus” feat. Verneri Pohjola & Samuel Blaser\n" +
-                "/Łukasz Ojdana, Maciej Garbowski, Krzysztof Gradziuk/\n" +
-                "\n" +
-                "Marek Napiórkowski Trio „KonKubiNap”\n" +
-                "/Marek Napiórkowski, Robert Kubiszyn, Cezary Konrad/\n" +
-                "\n" +
-                "9 grudnia (sobota), sala koncertowa Miasta Ogrodów, początek koncertów o godz. 18\n" +
-                "\n" +
-                "4. Międzynarodowy Konkurs na Kompozycję Jazzową\n" +
-                "ogłoszenie wyników, wręczenie nagród, koncert zwycięskich kompozycji\n" +
-                "\n" +
-                "Tribute to Akwarium\n" +
-                "/Eric Allen, Marek Kądziela, Joris Teepe, Piotr Wojtasik, Kuba Marciniak, Marcin Kaletka, Sebastian Sołdrzyński, Dominik Wania, Paweł Tomaszewski, Jakub Miarczyński, Igor Pietraszewski, Magdalena Zawartko, Anna Maria Mbayo/\n" +
-                "\n" +
-                "Kuba Więcek Trio (Absurdalna), godz. 21\n" +
-                "/Jakub Więcek, Michał Barański, Łukasz Żyta/\n" +
-                "\n" +
-                "10 grudnia (niedziela), Muzeum Śląskie (Strefa Kultury), początek koncertów o godz. 17\n" +
-                "\n" +
-                "Hearth: Rasmussen/ Rave/ Santos Silva/ Draksler\n" +
-                "/ Mette Rasmussen, Ada Rave, Susana Santos Silva, Kaja Draksler\n" +
-                "\n" +
-                "Marcin Masecki");
+                "Komu będzie mało wrażeń, jazzowe after party w klubie Absurdalna zapewni Kuba Więcek Trio.");
         event4.setAddress("Katowice Miasto Ogrodów");
         event4.setDate(15431439610000L);
         event4.setProfile("{\"25\":0,\"10\":0,\"5\":0,\"14\":0,\"2\":0,\"19\":0,\"13\":0,\"8\":0,\"27\":0,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":6,\"1\":0,\"29\":0,\"21\":0,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
@@ -220,38 +189,7 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
                 "\n" +
                 "Największy skład tegorocznego Silesian Jazz Festivalu pojawi się na scenie Miasta Ogrodów 9 grudnia na koncercie „Tribute to Akwarium” Piotra Wojtasika. To współczesny elektro-akustyczny jazz reprezentujący nurt modalny z elementami muzyki etnicznej. Wcześniej poznamy laureatów Konkursu na Kompozycję Jazzową.\n" +
                 "\n" +
-                "Komu będzie mało wrażeń, jazzowe after party w klubie Absurdalna zapewni Kuba Więcek Trio.\n" +
-                "\n" +
-                "Finał 10 grudnia zapowiada się najbardziej międzynarodowo. Przed solowym recitale Marcina Maseckiego w Muzeum Śląskim spotkanie z projektem Hearth: Rasmussen/ Rave/ Santos Silva/ Draksler. To jedyne w swoim rodzaju spotkanie muzyków z Norwegii, Holandii, Portugalii i Słowenii.\n" +
-                "\n" +
-                "\n" +
-                "Program 12. Silesian Jazz Festivalu\n" +
-                "\n" +
-                "8 grudnia (piątek), sala koncertowa Miasta Ogrodów, początek koncertów o godz. 18\n" +
-                "\n" +
-                "RGG „Contemporary Sonus” feat. Verneri Pohjola & Samuel Blaser\n" +
-                "/Łukasz Ojdana, Maciej Garbowski, Krzysztof Gradziuk/\n" +
-                "\n" +
-                "Marek Napiórkowski Trio „KonKubiNap”\n" +
-                "/Marek Napiórkowski, Robert Kubiszyn, Cezary Konrad/\n" +
-                "\n" +
-                "9 grudnia (sobota), sala koncertowa Miasta Ogrodów, początek koncertów o godz. 18\n" +
-                "\n" +
-                "4. Międzynarodowy Konkurs na Kompozycję Jazzową\n" +
-                "ogłoszenie wyników, wręczenie nagród, koncert zwycięskich kompozycji\n" +
-                "\n" +
-                "Tribute to Akwarium\n" +
-                "/Eric Allen, Marek Kądziela, Joris Teepe, Piotr Wojtasik, Kuba Marciniak, Marcin Kaletka, Sebastian Sołdrzyński, Dominik Wania, Paweł Tomaszewski, Jakub Miarczyński, Igor Pietraszewski, Magdalena Zawartko, Anna Maria Mbayo/\n" +
-                "\n" +
-                "Kuba Więcek Trio (Absurdalna), godz. 21\n" +
-                "/Jakub Więcek, Michał Barański, Łukasz Żyta/\n" +
-                "\n" +
-                "10 grudnia (niedziela), Muzeum Śląskie (Strefa Kultury), początek koncertów o godz. 17\n" +
-                "\n" +
-                "Hearth: Rasmussen/ Rave/ Santos Silva/ Draksler\n" +
-                "/ Mette Rasmussen, Ada Rave, Susana Santos Silva, Kaja Draksler\n" +
-                "\n" +
-                "Marcin Masecki");
+                "Komu będzie mało wrażeń, jazzowe after party w klubie Absurdalna zapewni Kuba Więcek Trio.\n");
         event5.setAddress("Katowice Miasto Ogrodów");
         event5.setDate(15431439610000L);
         event5.setProfile("{\"25\":0,\"10\":0,\"5\":0,\"14\":6,\"2\":0,\"19\":0,\"13\":0,\"8\":0,\"27\":0,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":0,\"1\":0,\"29\":0,\"21\":0,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
@@ -270,38 +208,7 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
                 "\n" +
                 "Największy skład tegorocznego Silesian Jazz Festivalu pojawi się na scenie Miasta Ogrodów 9 grudnia na koncercie „Tribute to Akwarium” Piotra Wojtasika. To współczesny elektro-akustyczny jazz reprezentujący nurt modalny z elementami muzyki etnicznej. Wcześniej poznamy laureatów Konkursu na Kompozycję Jazzową.\n" +
                 "\n" +
-                "Komu będzie mało wrażeń, jazzowe after party w klubie Absurdalna zapewni Kuba Więcek Trio.\n" +
-                "\n" +
-                "Finał 10 grudnia zapowiada się najbardziej międzynarodowo. Przed solowym recitale Marcina Maseckiego w Muzeum Śląskim spotkanie z projektem Hearth: Rasmussen/ Rave/ Santos Silva/ Draksler. To jedyne w swoim rodzaju spotkanie muzyków z Norwegii, Holandii, Portugalii i Słowenii.\n" +
-                "\n" +
-                "\n" +
-                "Program 12. Silesian Jazz Festivalu\n" +
-                "\n" +
-                "8 grudnia (piątek), sala koncertowa Miasta Ogrodów, początek koncertów o godz. 18\n" +
-                "\n" +
-                "RGG „Contemporary Sonus” feat. Verneri Pohjola & Samuel Blaser\n" +
-                "/Łukasz Ojdana, Maciej Garbowski, Krzysztof Gradziuk/\n" +
-                "\n" +
-                "Marek Napiórkowski Trio „KonKubiNap”\n" +
-                "/Marek Napiórkowski, Robert Kubiszyn, Cezary Konrad/\n" +
-                "\n" +
-                "9 grudnia (sobota), sala koncertowa Miasta Ogrodów, początek koncertów o godz. 18\n" +
-                "\n" +
-                "4. Międzynarodowy Konkurs na Kompozycję Jazzową\n" +
-                "ogłoszenie wyników, wręczenie nagród, koncert zwycięskich kompozycji\n" +
-                "\n" +
-                "Tribute to Akwarium\n" +
-                "/Eric Allen, Marek Kądziela, Joris Teepe, Piotr Wojtasik, Kuba Marciniak, Marcin Kaletka, Sebastian Sołdrzyński, Dominik Wania, Paweł Tomaszewski, Jakub Miarczyński, Igor Pietraszewski, Magdalena Zawartko, Anna Maria Mbayo/\n" +
-                "\n" +
-                "Kuba Więcek Trio (Absurdalna), godz. 21\n" +
-                "/Jakub Więcek, Michał Barański, Łukasz Żyta/\n" +
-                "\n" +
-                "10 grudnia (niedziela), Muzeum Śląskie (Strefa Kultury), początek koncertów o godz. 17\n" +
-                "\n" +
-                "Hearth: Rasmussen/ Rave/ Santos Silva/ Draksler\n" +
-                "/ Mette Rasmussen, Ada Rave, Susana Santos Silva, Kaja Draksler\n" +
-                "\n" +
-                "Marcin Masecki");
+                "Komu będzie mało wrażeń, jazzowe after party w klubie Absurdalna zapewni Kuba Więcek Trio.\n");
         event6.setAddress("Katowice Miasto Ogrodów");
         event6.setDate(15431439610000L);
         event6.setProfile("{\"25\":0,\"10\":0,\"5\":0,\"14\":0,\"2\":0,\"19\":0,\"13\":0,\"8\":0,\"27\":0,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":0,\"1\":0,\"29\":6,\"21\":0,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
@@ -309,6 +216,18 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
         event6.setLongitude(19.025127);
         event6.setUsers(users);
         eventRepository.save(event6);
+
+        Event event7 = new Event();
+        event7.setName("GKS Katowice vs. Skra Bełchatów");
+        event7.setDescription("Zapraszamy na siatkarski mecz GKS Katowice vs. Skra Bełchatów.\n" +
+                "Więcej informacji wkrótce");
+        event7.setAddress("aleja Korfantego 35, 40-005 Katowice");
+        event7.setLatitude(50.2660531);
+        event7.setLongitude(19.0253699);
+        event7.setDate(1520618400000L);
+        event7.setProfile("{\"25\":0,\"10\":0,\"5\":0,\"14\":0,\"2\":6,\"19\":0,\"13\":0,\"8\":0,\"27\":0,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":0,\"1\":0,\"29\":0,\"21\":0,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
+        eventRepository.save(event7);
+
 
 
 //        Event event5 = new Event();
@@ -329,7 +248,7 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
 //        event6.setAddress("Muzeum Śląskie, ul. T. Dobrowolskiego 1, zbiórka przy kasach");
 //        event6.setDate(432432L);
 
-        //adam
+        //testowy
         Comment comment = new Comment();
         comment.setRating(1);
         comment.setComment("Nudy");
@@ -366,7 +285,7 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
         comment8.setEvent(event4);
         commentRepository.save(comment8);
 
-        //ddd
+        //Adam
 
         Comment comment3 = new Comment();
         comment3.setRating(2);
@@ -403,6 +322,7 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
         comment20.setEvent(event5);
         commentRepository.save(comment20);
 
+
         Comment comment21 = new Comment();
         comment21.setRating(4);
         comment21.setComment("Trzeba być!");
@@ -410,8 +330,15 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
         comment21.setEvent(event6);
         commentRepository.save(comment21);
 
+        Comment comment30 = new Comment();
+        comment30.setRating(4);
+        comment30.setComment("Trzeba być!");
+        comment30.setUser(user2);
+        comment30.setEvent(event7);
+        commentRepository.save(comment30);
 
-        ///xxx
+
+        ///Marek
         Comment comment9 = new Comment();
         comment9.setRating(4);
         comment9.setComment("Mieszane odczucia");
@@ -454,7 +381,14 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
         comment16.setEvent(event5);
         commentRepository.save(comment16);
 
-        //jjj
+        Comment comment31 = new Comment();
+        comment31.setRating(5);
+        comment31.setComment("Dobry mecz");
+        comment31.setUser(user3);
+        comment31.setEvent(event7);
+        commentRepository.save(comment31);
+
+        //Monika
         Comment comment13 = new Comment();
         comment13.setRating(4);
         comment13.setComment("Eh meh...");
@@ -497,25 +431,32 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
         comment25.setEvent(event6);
         commentRepository.save(comment25);
 
+        Comment comment32 = new Comment();
+        comment32.setRating(6);
+        comment32.setComment("Będzie co oglądać");
+        comment32.setUser(user4);
+        comment32.setEvent(event7);
+        commentRepository.save(comment32);
+
 
         ///FRIENDS
 
         Friend friend = new Friend();
         friend.setUser(user1);
-        friend.setUsername("xxx");
-        friend.setName("xxx");
+        friend.setUsername("Monika");
+        friend.setName("Monika");
         friendService.save(friend);
 
         Friend friend1 = new Friend();
         friend1.setUser(user1);
-        friend1.setUsername("ddd");
-        friend1.setName("ddd");
+        friend1.setUsername("Adam");
+        friend1.setName("Adam");
         friendService.save(friend1);
 
         Friend friend2 = new Friend();
         friend2.setUser(user1);
-        friend2.setUsername("jjj");
-        friend2.setName("jjj");
+        friend2.setUsername("Marek");
+        friend2.setName("Marek");
         friendService.save(friend2);
 
 

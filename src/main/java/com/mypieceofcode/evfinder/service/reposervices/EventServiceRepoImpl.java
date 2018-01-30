@@ -188,7 +188,7 @@ public class EventServiceRepoImpl implements EventService {
         List<Event> eventsRec = eventRecommendation.recommendByUsers(user, build.findSimilarUsersWithThreshold(coordinate, 0.4), events);
         if (eventsRec.size() > 0) {
             for (Event event : eventsRec) {
-                if (event.getDate() > new Date().getTime()) {
+                if (event.getDate() > new Date().getTime() && event.getExpectedRating() > 0) {
                     eventCommands.add(eventToEventCommand.convert(event));
                 }
             }
