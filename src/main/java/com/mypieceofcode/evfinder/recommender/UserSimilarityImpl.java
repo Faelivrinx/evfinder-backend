@@ -45,6 +45,10 @@ public class UserSimilarityImpl implements UserSimilarity {
                     result.add(usersFriend);
                 }
             }
+
+            for (User user1 : result) {
+                System.out.println("User: " + user1.getUsername() + " with similarity: " + user1.getSimilarity());
+            }
             return result;
         }
         throw new IllegalArgumentException("User not set!");
@@ -66,9 +70,7 @@ public class UserSimilarityImpl implements UserSimilarity {
 
     @Override
     public void setUser(User user) {
-        if (this.user == null) {
-            this.user = user;
-        }
+        this.user = user;
     }
 
     @Override

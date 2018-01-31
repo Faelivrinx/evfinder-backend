@@ -195,6 +195,7 @@ public class EventServiceRepoImpl implements EventService {
         if (eventsRec.size() > 0) {
             for (Event event : eventsRec) {
                 if (event.getDate() > new Date().getTime() && event.getExpectedRating() > 0) {
+                    System.out.println("Event: " + event.getName() + " expected rating: " + event.getExpectedRating());
                     eventCommands.add(eventToEventCommand.convert(event));
                 }
             }

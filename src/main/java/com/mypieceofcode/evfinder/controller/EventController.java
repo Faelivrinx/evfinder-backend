@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 @RestController
@@ -132,8 +133,18 @@ public class EventController {
         User user = userService.findUserByApiKey(token);
         EventCommand event = eventService.findById(id);
 
-        for (UserAttendCommand userAttendCommand : event.getUsers()) {
-            if (userAttendCommand.getId() == user.getUserId()){
+//        for (UserAttendCommand userAttendCommand : event.getUsers()) {
+//            if (userAttendCommand.getId() == user.getUserId()){
+//
+//                return new EventCommand();
+//            }
+//        }
+
+        for (Iterator<UserAttendCommand> iter = event.getUsers().listIterator(); iter.hasNext(); ) {
+            UserAttendCommand userAttendCommand = iter.next();
+            if (userAttendCommand.getId() == user.getUserId()) {
+                iter.remove();
+                eventService.save(event);
                 return new EventCommand();
             }
         }

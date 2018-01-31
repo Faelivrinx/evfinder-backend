@@ -262,7 +262,7 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
 
         Comment comment7 = new Comment();
         comment7.setRating(6);
-        comment7.setComment("Tak średnio");
+        comment7.setComment("Nice!");
         comment7.setUser(user1);
         comment7.setEvent(event2);
         commentRepository.save(comment7);
@@ -342,7 +342,7 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
         commentRepository.save(comment30);
 
         Comment comment40 = new Comment();
-        comment40.setRating(2);
+        comment40.setRating(3);
         comment40.setComment("Nie wydaje mi się to ciekawe :/");
         comment40.setUser(user2);
         comment40.setEvent(event8);
@@ -358,29 +358,29 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
 
         ///Marek
         Comment comment9 = new Comment();
-        comment9.setRating(4);
+        comment9.setRating(1);
         comment9.setComment("Mieszane odczucia");
         comment9.setUser(user3);
         comment9.setEvent(event1);
         commentRepository.save(comment9);
 
         Comment comment10 = new Comment();
-        comment10.setRating(2);
-        comment10.setComment("Same...");
+        comment10.setRating(5);
+        comment10.setComment("Może być super :D");
         comment10.setUser(user3);
         comment10.setEvent(event2);
         commentRepository.save(comment10);
 
         Comment comment11 = new Comment();
-        comment11.setRating(6);
-        comment11.setComment("Na plus");
+        comment11.setRating(4);
+        comment11.setComment("Całkiem całkiem");
         comment11.setUser(user3);
         comment11.setEvent(event3);
         commentRepository.save(comment11);
 
         Comment comment12 = new Comment();
         comment12.setRating(2);
-        comment12.setComment("Trzeba!");
+        comment12.setComment("Meh!");
         comment12.setUser(user3);
         comment12.setEvent(event4);
         commentRepository.save(comment12);
