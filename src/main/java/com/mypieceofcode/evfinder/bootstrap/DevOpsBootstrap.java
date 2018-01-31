@@ -146,16 +146,12 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
         event3.setName("Hey");
         event3.setDescription("Przez te 25 lat wydaliśmy 18 płyt, zagraliśmy niezliczoną liczbę koncertów praktycznie w każdym zakątku Polski. Odwiedziliśmy trzy kontynenty, choć jeden niekoniecznie muzycznie. Liczby piosenek nawet nie zliczymy, gdyż kończą się nam palce w zespole.\n" +
                 "\n" +
-                "Chcielibyśmy to wszystko jakoś podsumować, spiąć w klamrę, zebrać w dwa tomy. To przecież dzięki Wam mieliśmy siłę i ochotę na stworzenie tego wszystkiego, co udało nam się nagrać i zaśpiewać. Jak świętować, to tylko z Wami.\n" +
-                "\n" +
-                "FAYRANT to siedem koncertów w największych halach koncertowych w kraju. Koncertów wyjątkowych, wspominkowych, przekrojowych a przede wszystkim emocjonalnych. Będą goście, będą hity, będą rzeczy zapomniane, a specjalnie na tę imprezę wyciągnięte z dna szuflady. Będą również niespodzianki i cała masa dobrej zabawy, czyli wszystko to, czego nie może zabraknąć na dobrej imprezie urodzinowej.\n" +
-                "\n" +
-                "Do zobaczenia!");
+                "Chcielibyśmy to wszystko jakoś podsumować, spiąć w klamrę, zebrać w dwa tomy.");
         event3.setAddress("Katowice Spodek!");
         event3.setDate(15431439610000L);
         event3.setProfile("{\"25\":0,\"10\":0,\"5\":0,\"14\":0,\"2\":0,\"19\":0,\"13\":6,\"8\":0,\"27\":0,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":0,\"1\":0,\"29\":0,\"21\":0,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
-        event3.setLatitude(50.265711);
-        event3.setLongitude(19.0228923);
+        event3.setLatitude(50.260740);
+        event3.setLongitude(19.013555);
 //        event3.setUsers(users);
         eventRepository.save(event3);
 
@@ -166,54 +162,34 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
                 "\n" +
                 "Niezmiennie częścią festiwalu będzie rozstrzygniecie Międzynarodowego Konkursu na Kompozycję Jazzową oraz koncert, podczas którego po raz pierwszy wykonane zostaną nagrodzone utwory. 4. edycja konkursu przynosi zmiany. Kompozytorzy mają do dyspozycji formy muzyczne od sola do sekstetu na określony skład instrumentalny. Jak co roku wręczona zostanie statuetka Ambasadora Jazzu.\n" +
                 "\n" +
-                "Pierwszego wieczoru dominować będą tria. Najpierw katowickie RGG, wzmocnione przez dwóch gości z zagranicy - Verneri Pohjola, okrzykniętego „najlepszym fińskim trębaczem jazzowym młodego pokolenia” oraz Samuela Blasera, szwajcarskiego puzonistę porównywanego do legendarnego Alberta Mangelsdorffa. Drugim triem będzie zespół Marka Napiórkowskiego, znane też jako KonKubiNap od nazwisk trójki muzyków.\n" +
-                "\n" +
-                "Największy skład tegorocznego Silesian Jazz Festivalu pojawi się na scenie Miasta Ogrodów 9 grudnia na koncercie „Tribute to Akwarium” Piotra Wojtasika. To współczesny elektro-akustyczny jazz reprezentujący nurt modalny z elementami muzyki etnicznej. Wcześniej poznamy laureatów Konkursu na Kompozycję Jazzową.\n" +
-                "\n" +
-                "Komu będzie mało wrażeń, jazzowe after party w klubie Absurdalna zapewni Kuba Więcek Trio.");
+                "Pierwszego wieczoru dominować będą tria.");
         event4.setAddress("Katowice Miasto Ogrodów");
         event4.setDate(15431439610000L);
         event4.setProfile("{\"25\":0,\"10\":0,\"5\":0,\"14\":0,\"2\":0,\"19\":0,\"13\":0,\"8\":0,\"27\":0,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":6,\"1\":0,\"29\":0,\"21\":0,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
-        event4.setLatitude(50.262774);
-        event4.setLongitude(19.025127);
+        event4.setLatitude(50.2528837);
+        event4.setLongitude(19.0229935);
         event4.setUsers(users);
         eventRepository.save(event4);
 
         Event event5 = new Event();
-        event5.setName("Koncert pop");
-        event5.setDescription("Trzy jazzowe wieczory, każdy z aż dwoma koncertami w programie – tak w skrócie zapowiada się 12. edycja Silesian Jazz Festivalu. Jego program będzie, jak zwykle, bardzo zróżnicowany stylistycznie i ukierunkowany na współczesną, polską i europejską muzykę jazzową. Spotkamy się z nią w sali koncertowej Miasta Ogrodów, w klubach, ale też w nowej dla festiwalu przestrzeni Muzeum Śląskiego.\n" +
-                "\n" +
-                "Niezmiennie częścią festiwalu będzie rozstrzygniecie Międzynarodowego Konkursu na Kompozycję Jazzową oraz koncert, podczas którego po raz pierwszy wykonane zostaną nagrodzone utwory. 4. edycja konkursu przynosi zmiany. Kompozytorzy mają do dyspozycji formy muzyczne od sola do sekstetu na określony skład instrumentalny. Jak co roku wręczona zostanie statuetka Ambasadora Jazzu.\n" +
-                "\n" +
-                "Pierwszego wieczoru dominować będą tria. Najpierw katowickie RGG, wzmocnione przez dwóch gości z zagranicy - Verneri Pohjola, okrzykniętego „najlepszym fińskim trębaczem jazzowym młodego pokolenia” oraz Samuela Blasera, szwajcarskiego puzonistę porównywanego do legendarnego Alberta Mangelsdorffa. Drugim triem będzie zespół Marka Napiórkowskiego, znane też jako KonKubiNap od nazwisk trójki muzyków.\n" +
-                "\n" +
-                "Największy skład tegorocznego Silesian Jazz Festivalu pojawi się na scenie Miasta Ogrodów 9 grudnia na koncercie „Tribute to Akwarium” Piotra Wojtasika. To współczesny elektro-akustyczny jazz reprezentujący nurt modalny z elementami muzyki etnicznej. Wcześniej poznamy laureatów Konkursu na Kompozycję Jazzową.\n" +
-                "\n" +
-                "Komu będzie mało wrażeń, jazzowe after party w klubie Absurdalna zapewni Kuba Więcek Trio.\n");
-        event5.setAddress("Katowice Miasto Ogrodów");
+        event5.setName("Katowice - pARTyzant koncert");
+        event5.setDescription("pARTyzant cki koncert w Katowicach Piotrowicach - mateczniku gitarzysty . Niezwykłe miejsce wypełni się dźwiękami z nowej płyty \"Kenopsja\" i jak zwykle nie zabraknie niespodzianek ;) \n");
+        event5.setAddress("Narodowa Orkiestra Symfoniczna Polskiego Radia w Katowicach, Plac Sejmu Śląskiego 2");
         event5.setDate(15431439610000L);
-        event5.setProfile("{\"25\":0,\"10\":0,\"5\":0,\"14\":6,\"2\":0,\"19\":0,\"13\":0,\"8\":0,\"27\":0,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":0,\"1\":0,\"29\":0,\"21\":0,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
-        event5.setLatitude(50.262774);
-        event5.setLongitude(19.025127);
+        event5.setProfile("{\"25\":0,\"10\":0,\"5\":0,\"14\":0,\"2\":0,\"19\":0,\"13\":6,\"8\":0,\"27\":0,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":0,\"1\":0,\"29\":0,\"21\":0,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
+        event5.setLatitude(50.2301153);
+        event5.setLongitude(18.9507141);
         event5.setUsers(users);
         eventRepository.save(event5);
 
         Event event6 = new Event();
-        event6.setName("Dla Dzieci");
-        event6.setDescription("Trzy jazzowe wieczory, każdy z aż dwoma koncertami w programie – tak w skrócie zapowiada się 12. edycja Silesian Jazz Festivalu. Jego program będzie, jak zwykle, bardzo zróżnicowany stylistycznie i ukierunkowany na współczesną, polską i europejską muzykę jazzową. Spotkamy się z nią w sali koncertowej Miasta Ogrodów, w klubach, ale też w nowej dla festiwalu przestrzeni Muzeum Śląskiego.\n" +
-                "\n" +
-                "Niezmiennie częścią festiwalu będzie rozstrzygniecie Międzynarodowego Konkursu na Kompozycję Jazzową oraz koncert, podczas którego po raz pierwszy wykonane zostaną nagrodzone utwory. 4. edycja konkursu przynosi zmiany. Kompozytorzy mają do dyspozycji formy muzyczne od sola do sekstetu na określony skład instrumentalny. Jak co roku wręczona zostanie statuetka Ambasadora Jazzu.\n" +
-                "\n" +
-                "Pierwszego wieczoru dominować będą tria. Najpierw katowickie RGG, wzmocnione przez dwóch gości z zagranicy - Verneri Pohjola, okrzykniętego „najlepszym fińskim trębaczem jazzowym młodego pokolenia” oraz Samuela Blasera, szwajcarskiego puzonistę porównywanego do legendarnego Alberta Mangelsdorffa. Drugim triem będzie zespół Marka Napiórkowskiego, znane też jako KonKubiNap od nazwisk trójki muzyków.\n" +
-                "\n" +
-                "Największy skład tegorocznego Silesian Jazz Festivalu pojawi się na scenie Miasta Ogrodów 9 grudnia na koncercie „Tribute to Akwarium” Piotra Wojtasika. To współczesny elektro-akustyczny jazz reprezentujący nurt modalny z elementami muzyki etnicznej. Wcześniej poznamy laureatów Konkursu na Kompozycję Jazzową.\n" +
-                "\n" +
-                "Komu będzie mało wrażeń, jazzowe after party w klubie Absurdalna zapewni Kuba Więcek Trio.\n");
-        event6.setAddress("Katowice Miasto Ogrodów");
+        event6.setName("PRZYGODY TYMOTEUSZA MAJSTERKLEPKI");
+        event6.setDescription("W ramach niedzielnych Podwieczorków Teatralnych w Teatrze Gry i Ludzie w najbliższą niedzielę będzie można obejrzeć spektakl pt. 'Tymoteusz Majsterklepka'.");
+        event6.setAddress("Katowice");
         event6.setDate(15431439610000L);
         event6.setProfile("{\"25\":0,\"10\":0,\"5\":0,\"14\":0,\"2\":0,\"19\":0,\"13\":0,\"8\":0,\"27\":0,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":0,\"1\":0,\"29\":6,\"21\":0,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
-        event6.setLatitude(50.262774);
-        event6.setLongitude(19.025127);
+        event6.setLatitude(50.275538);
+        event6.setLongitude(19.066814);
         event6.setUsers(users);
         eventRepository.save(event6);
 
