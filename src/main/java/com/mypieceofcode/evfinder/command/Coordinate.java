@@ -4,6 +4,7 @@ public class Coordinate {
 
     private double latitude;
     private double longitude;
+    private int radius;
 
     private int recommendationType;
 
@@ -13,6 +14,14 @@ public class Coordinate {
     public Coordinate(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
+    }
+
+    public int getRadius() {
+        return radius;
+    }
+
+    public void setRadius(int radius) {
+        this.radius = radius;
     }
 
     public double getLatitude() {

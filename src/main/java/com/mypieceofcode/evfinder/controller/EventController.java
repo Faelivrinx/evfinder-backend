@@ -52,7 +52,7 @@ public class EventController {
 
     @PostMapping("events")
     public List<EventCommand> localEvents(@RequestBody Coordinate coordinate) {
-        List<EventCommand> localEvents = eventService.findLocalEvents(coordinate.getLatitude(), coordinate.getLongitude());
+        List<EventCommand> localEvents = eventService.findLocalEvents(coordinate);
 
         if (localEvents != null) {
             return localEvents;
@@ -88,7 +88,7 @@ public class EventController {
         }
 
         if (coordinate.getRecommendationType() == 0) {
-            return eventService.findLocalEvents(coordinate.getLatitude(), coordinate.getLongitude());
+            return eventService.findLocalEvents(coordinate);
         } else if (coordinate.getRecommendationType() == 1) {
             return eventService.findLocalEventsWithRecommendation(user, coordinate);
         } else if (coordinate.getRecommendationType() == 2) {

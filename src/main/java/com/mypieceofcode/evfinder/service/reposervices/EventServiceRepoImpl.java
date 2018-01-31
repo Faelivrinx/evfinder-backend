@@ -92,13 +92,13 @@ public class EventServiceRepoImpl implements EventService {
     }
 
     @Override
-    public List<EventCommand> findLocalEvents(double latitude, double longitude) {
+    public List<EventCommand> findLocalEvents(Coordinate coordinate) {
         LOG.warn("Getting events...");
         List<Event> events = new ArrayList<>();
         List<EventCommand> eventCommands = new ArrayList<>();
         Iterable<Event> allEvents = eventRepository.findAll();
         Observable.fromIterable(allEvents)
-                .filter(event -> distFrom(latitude, longitude, event.getLatitude(), event.getLongitude()) < 10000)
+                .filter(event -> distFrom(coordinate.getLatitude(), coordinate.getLongitude(), event.getLatitude(), event.getLongitude()) < coordinate.getRadius()*1000)
                 .doOnNext(events::add)
                 .subscribe(event -> {
                 }, throwable -> {
@@ -129,7 +129,7 @@ public class EventServiceRepoImpl implements EventService {
         List<EventCommand> eventCommands = new ArrayList<>();
         Iterable<Event> allEvents = eventRepository.findAll();
         Observable.fromIterable(allEvents)
-                .filter(event -> distFrom(coordinate.getLatitude(), coordinate.getLongitude(), event.getLatitude(), event.getLongitude()) < 10000)
+                .filter(event -> distFrom(coordinate.getLatitude(), coordinate.getLongitude(), event.getLatitude(), event.getLongitude()) < coordinate.getRadius()*1000)
                 .doOnNext(events::add)
                 .subscribe(event -> {
                 }, throwable -> {
@@ -183,7 +183,7 @@ public class EventServiceRepoImpl implements EventService {
         List<EventCommand> eventCommands = new ArrayList<>();
         Iterable<Event> allEvents = eventRepository.findAll();
         Observable.fromIterable(allEvents)
-                .filter(event -> distFrom(coordinate.getLatitude(), coordinate.getLongitude(), event.getLatitude(), event.getLongitude()) < 10000)
+                .filter(event -> distFrom(coordinate.getLatitude(), coordinate.getLongitude(), event.getLatitude(), event.getLongitude()) < coordinate.getRadius()*1000)
                 .doOnNext(events::add)
                 .subscribe(event -> {
                 }, throwable -> {
@@ -219,7 +219,7 @@ public class EventServiceRepoImpl implements EventService {
         List<EventCommand> eventCommands = new ArrayList<>();
         Iterable<Event> allEvents = eventRepository.findAll();
         Observable.fromIterable(allEvents)
-                .filter(event -> distFrom(coordinate.getLatitude(), coordinate.getLongitude(), event.getLatitude(), event.getLongitude()) < 10000)
+                .filter(event -> distFrom(coordinate.getLatitude(), coordinate.getLongitude(), event.getLatitude(), event.getLongitude()) < coordinate.getRadius()*1000)
                 .doOnNext(events::add)
                 .subscribe(event -> {
                 }, throwable -> {

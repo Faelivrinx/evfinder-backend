@@ -10,7 +10,7 @@ import java.util.List;
 public interface EventService extends CRUDService<EventCommand>{
 
     List<Event> findLocalDomainEvents(User user, Coordinate coordinate);
-    List<EventCommand> findLocalEvents(double latitude, double longitude);
+    List<EventCommand> findLocalEvents(Coordinate coordinate);
     List<EventCommand> findLocalEventsWithRecommendation(User user, Coordinate coordinate);
     List<EventCommand> findLocalEventsUsedUserRecommendation(User user, Coordinate coordinate);
     List<EventCommand> findByFriends(User user, Coordinate coordinate);
