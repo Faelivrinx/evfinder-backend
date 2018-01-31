@@ -123,7 +123,7 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
         event1.setName("Św. Barbara w sztuce i legendzie");
         event1.setDescription("Z okazji Barbórki zapraszamy do obejrzenia obrazów i rzeźb przedstawiających świętą Barbarę. Jej wizerunki powstały w różnych epokach i wykonano je różnymi technikami.");
         event1.setAddress("Muzeum Śląskie, ul. T. Dobrowolskiego 1, zbiórka przy kasach");
-        event1.setDate(15431439610000L);
+        event1.setDate(1522080000000L);
         event1.setProfile("{\"25\":0,\"10\":0,\"5\":0,\"14\":0,\"2\":0,\"19\":0,\"13\":0,\"8\":0,\"27\":6,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":0,\"1\":0,\"29\":0,\"21\":0,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
         event1.setLatitude(50.263162);
         event1.setLongitude(19.0311411);
@@ -135,7 +135,7 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
         event2.setDescription("Dział Archeologii Muzeum Śląskiego zaprasza na cykl wykładów, które poprowadzą badacze oraz naukowcy." +
                 "Wykład poświęcony będzie zagadnieniom związanym z archeobotaniką, nauką zajmującą się badaniem pozostałości roślinnych odnajdywanych na stanowiskach archeologicznych. Opowiemy również o kulisach pracy archeobotanika.Prowadzenie: dr Joanna Abramów, Pracownia ARCHBOT");
         event2.setAddress("Muzeum Śląskie, ul. Dobrowolskiego 1 / poziom -3 / sala A");
-        event2.setDate(15431439610000L);
+        event2.setDate(1522252800000L);
         event2.setProfile("{\"25\":0,\"10\":0,\"5\":0,\"14\":0,\"2\":0,\"19\":0,\"13\":0,\"8\":0,\"27\":0,\"6\":0,\"16\":0,\"28\":6,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":0,\"1\":0,\"29\":0,\"21\":0,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
         event2.setLatitude(50.263779);
         event2.setLongitude(19.028871);
@@ -148,7 +148,7 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
                 "\n" +
                 "Chcielibyśmy to wszystko jakoś podsumować, spiąć w klamrę, zebrać w dwa tomy.");
         event3.setAddress("Katowice Spodek!");
-        event3.setDate(15431439610000L);
+        event3.setDate(1522094400000L);
         event3.setProfile("{\"25\":0,\"10\":0,\"5\":0,\"14\":0,\"2\":0,\"19\":0,\"13\":6,\"8\":0,\"27\":0,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":0,\"1\":0,\"29\":0,\"21\":0,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
         event3.setLatitude(50.260740);
         event3.setLongitude(19.013555);
@@ -164,7 +164,7 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
                 "\n" +
                 "Pierwszego wieczoru dominować będą tria.");
         event4.setAddress("Katowice Miasto Ogrodów");
-        event4.setDate(15431439610000L);
+        event4.setDate(1522958400000L);
         event4.setProfile("{\"25\":0,\"10\":0,\"5\":0,\"14\":0,\"2\":0,\"19\":0,\"13\":0,\"8\":0,\"27\":0,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":6,\"1\":0,\"29\":0,\"21\":0,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
         event4.setLatitude(50.2528837);
         event4.setLongitude(19.0229935);
@@ -175,7 +175,7 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
         event5.setName("Katowice - pARTyzant koncert");
         event5.setDescription("pARTyzant cki koncert w Katowicach Piotrowicach - mateczniku gitarzysty . Niezwykłe miejsce wypełni się dźwiękami z nowej płyty \"Kenopsja\" i jak zwykle nie zabraknie niespodzianek ;) \n");
         event5.setAddress("Narodowa Orkiestra Symfoniczna Polskiego Radia w Katowicach, Plac Sejmu Śląskiego 2");
-        event5.setDate(15431439610000L);
+        event5.setDate(1520103600000L);
         event5.setProfile("{\"25\":0,\"10\":0,\"5\":0,\"14\":0,\"2\":0,\"19\":0,\"13\":6,\"8\":0,\"27\":0,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":0,\"1\":0,\"29\":0,\"21\":0,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
         event5.setLatitude(50.2301153);
         event5.setLongitude(18.9507141);
@@ -186,7 +186,7 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
         event6.setName("PRZYGODY TYMOTEUSZA MAJSTERKLEPKI");
         event6.setDescription("W ramach niedzielnych Podwieczorków Teatralnych w Teatrze Gry i Ludzie w najbliższą niedzielę będzie można obejrzeć spektakl pt. 'Tymoteusz Majsterklepka'.");
         event6.setAddress("Katowice");
-        event6.setDate(15431439610000L);
+        event6.setDate(1519923600000L);
         event6.setProfile("{\"25\":0,\"10\":0,\"5\":0,\"14\":0,\"2\":0,\"19\":0,\"13\":0,\"8\":0,\"27\":0,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":0,\"1\":0,\"29\":6,\"21\":0,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
         event6.setLatitude(50.275538);
         event6.setLongitude(19.066814);
@@ -204,7 +204,35 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
         event7.setProfile("{\"25\":0,\"10\":0,\"5\":0,\"14\":0,\"2\":6,\"19\":0,\"13\":0,\"8\":0,\"27\":0,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":0,\"1\":0,\"29\":0,\"21\":0,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
         eventRepository.save(event7);
 
+        Event event8 = new Event();
+        event8.setName("Krzysztof Penderecki (Verdi's Messa da Requiem)");
+        event8.setDescription("Koncert muzyki poważnej");
+        event8.setAddress("Pl. Wojciecha Kilara 1");
+        event8.setLatitude(50.263997);
+        event8.setLongitude(19.027769);
+        event8.setDate(1520190000000L);
+        event8.setProfile("{\"25\":0,\"10\":0,\"5\":0,\"14\":0,\"2\":0,\"19\":0,\"13\":0,\"8\":0,\"27\":0,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":0,\"1\":0,\"29\":0,\"21\":6,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
+        eventRepository.save(event8);
 
+        Event event9 = new Event();
+        event9.setName("Ba rockowe ostatki!");
+        event9.setDescription("Kwintet Śląskich Kameralistów zaprasza na \"Ba.. Rockowe Ostatki\"! W programie polskie prawykonanie Kwartetu smyczkowego F-dur Maurice\\'a Ravela w wersji na kwintet smyczkowy oraz muzyka z płyt \"ba.. Rockowo\" i \"Mecyje\":");
+        event9.setAddress("Filharmonia Śląska im. Henryka Mikołaja Góreckiego");
+        event9.setLatitude(50.260771);
+        event9.setLongitude(19.013731);
+        event9.setDate(1519758000000L);
+        event9.setProfile("{\"25\":0,\"10\":0,\"5\":0,\"14\":0,\"2\":0,\"19\":0,\"13\":6,\"8\":0,\"27\":0,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":0,\"1\":0,\"29\":0,\"21\":0,\"11\":0,\"9\":0,\"24\":0,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
+        eventRepository.save(event9);
+
+        Event event10 = new Event();
+        event10.setName("11. Katowicki Karnawał Komedii - dzień 6");
+        event10.setDescription("Co roku, w czasie karnawału organizatorzy Katowickiego Karnawału Komedii proponują na scenach Teatru Korez i Teatru Śląskiego niepowtarzalny repertuar spektakli z całej Polski oraz imprez towarzyszących. Na przełomie stycznia i lutego do Katowic zjeżdżają znakomici aktorzy prezentujący najciekawsze tytuły spektakli sezonu oraz te, które widzowie pokochali w ostatnich latach.");
+        event10.setAddress("Teatr Korez w Katowicach");
+        event10.setLatitude(50.2528947);
+        event10.setLongitude(19.023369);
+        event10.setDate(1519844400000L);
+        event10.setProfile("{\"25\":0,\"10\":0,\"5\":0,\"14\":0,\"2\":0,\"19\":0,\"13\":0,\"8\":0,\"27\":0,\"6\":0,\"16\":0,\"28\":0,\"7\":0,\"4\":0,\"20\":0,\"17\":0,\"3\":0,\"22\":0,\"1\":0,\"29\":0,\"21\":0,\"11\":0,\"9\":0,\"24\":6,\"26\":0,\"15\":0,\"30\":0,\"18\":0}\t");
+        eventRepository.save(event10);
 
 //        Event event5 = new Event();
 //        event5.setName("Św. Barbara w sztuce i legendzie");
@@ -313,6 +341,20 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
         comment30.setEvent(event7);
         commentRepository.save(comment30);
 
+        Comment comment40 = new Comment();
+        comment40.setRating(2);
+        comment40.setComment("Nie wydaje mi się to ciekawe :/");
+        comment40.setUser(user2);
+        comment40.setEvent(event8);
+        commentRepository.save(comment40);
+
+        Comment comment50 = new Comment();
+        comment50.setRating(5);
+        comment50.setComment("Rock n roll!");
+        comment50.setUser(user2);
+        comment50.setEvent(event9);
+        commentRepository.save(comment50);
+
 
         ///Marek
         Comment comment9 = new Comment();
@@ -364,6 +406,20 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
         comment31.setEvent(event7);
         commentRepository.save(comment31);
 
+        Comment comment41 = new Comment();
+        comment41.setRating(1);
+        comment41.setComment("Nie warto iść :/");
+        comment41.setUser(user3);
+        comment41.setEvent(event8);
+        commentRepository.save(comment41);
+
+        Comment comment51 = new Comment();
+        comment51.setRating(5);
+        comment51.setComment("Dobry początek 2018! ;)");
+        comment51.setUser(user3);
+        comment51.setEvent(event9);
+        commentRepository.save(comment51);
+
         //Monika
         Comment comment13 = new Comment();
         comment13.setRating(4);
@@ -413,6 +469,20 @@ public class DevOpsBootstrap implements ApplicationListener<ContextRefreshedEven
         comment32.setUser(user4);
         comment32.setEvent(event7);
         commentRepository.save(comment32);
+
+        Comment comment42 = new Comment();
+        comment42.setRating(3);
+        comment42.setComment("Srednio :/");
+        comment42.setUser(user4);
+        comment42.setEvent(event8);
+        commentRepository.save(comment42);
+
+        Comment comment52 = new Comment();
+        comment52.setRating(5);
+        comment52.setComment("Trzeba być!");
+        comment52.setUser(user4);
+        comment52.setEvent(event9);
+        commentRepository.save(comment52);
 
 
         ///FRIENDS

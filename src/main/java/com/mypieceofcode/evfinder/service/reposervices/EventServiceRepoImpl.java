@@ -104,12 +104,18 @@ public class EventServiceRepoImpl implements EventService {
                 }, throwable -> {
                 }, () -> {
                 });
-
+        long time = new Date().getTime();
         for (Event event : events) {
-            eventCommands.add(eventToEventCommand.convert(event));
+            if (time < event.getDate())
+                eventCommands.add(eventToEventCommand.convert(event));
         }
 
         if (!eventCommands.isEmpty()) {
+            eventCommands.sort((o1, o2) -> {
+                if (o1.getDate() == o2.getDate())
+                    return 0;
+                return o1.getDate() > o2.getDate() ? 1 : -1;
+            });
             return eventCommands;
         }
         return null;

@@ -102,6 +102,16 @@ public class FriendController {
             }
         }
 
+        for (String friendUsername : friendsDelete.getUsernames()) {
+            User friend = userService.findByUsername(friendUsername);
+            for (Friend friend1 : friend.getFriends()) {
+                if (friend1.getUsername().equals(user.getUsername())){
+                    friendService.deleteById(friend1.getId());
+                    taskResponse.setSucces();
+                }
+            }
+        }
+
         return taskResponse;
     }
 
